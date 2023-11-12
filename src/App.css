@@ -1,0 +1,101 @@
+/* App.css */
+.app {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.form-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.archive-dropdown {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.archive-dropdown label {
+  margin-right: 5px;
+}
+
+.shopping-cards-container {
+  display: grid;
+  gap: 10px;
+}
+
+.list .shopping-card {
+  display: block; /* Ensure cards are displayed as blocks in list view */
+}
+
+.tiles .shopping-card {
+  width: 150px;
+  height: 150px;
+}
+
+.shopping-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.shopping-card.archived {
+  background-color: #eee;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header {
+  flex-grow: 1;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Style for individual buttons */
+.action-buttons button,
+.archive-dropdown select,
+.toggle-view-button {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-buttons button.edit {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.archive-button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.archive-button.archived {
+  background-color: #808080;
+}
+
+.delete-button {
+  background-color: #ff6464;
+  color: #fff;
+}
+
+.archive-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.archive-dropdown label {
+  margin-right: 5px;
+}
