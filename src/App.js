@@ -8,6 +8,34 @@ const App = () => {
   const [showArchived, setShowArchived] = useState(false);
   const [newCardName, setNewCardName] = useState('');
   const [viewMode, setViewMode] = useState('list');
+  const [darkMode, setDarkMode] = useState(false);
+  const [language, setLanguage] = useState('en');
+
+
+  const translations = {
+    en: {
+      appTitle: 'React Shopping List App',
+      addCard: 'Add Shopping Card',
+      switchArchive: 'Switch Archive',
+      switchViewMode: 'Switch View Mode',
+      switchLanguage: 'Switch to Czech',
+    },
+    cz: {
+      appTitle: 'React Nakupovací Seznam',
+      addCard: 'Přidat nákupní kartu',
+      switchArchive: 'Přepnout archiv',
+      switchViewMode: 'Přepnout zobrazení',
+      switchLanguage: 'Switch to English',
+    },
+  };
+  
+  const toggleLanguage = () => {
+    setLanguage((prevLanguage) => (prevLanguage === 'en' ? 'cz' : 'en'));
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   const addShoppingCard = () => {
     if (newCardName.trim() !== '') {
@@ -52,13 +80,12 @@ const App = () => {
     ? shoppingCards.filter((card) => !card.archived)
     : shoppingCards.filter((card) => card.archived);
 
-  return (
-    <div className="app">
-      <h1>React Shopping List App</h1>
+   return (
+    <div className={`app ${darkMode ? 'dark-mode' : ''}`}>
+      <h1>{translations[language].appTitle}</h1>
 
-      {/* Shopping Card Form */}
       <div className="form-container">
-        <h2>Add Shopping Card</h2>
+        <h2>{translations[language].addCard}</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -67,32 +94,31 @@ const App = () => {
         >
           <input
             type="text"
-            placeholder="Enter card name"
+            placeholder={translations[language].enterCardName}
             value={newCardName}
             onChange={(e) => setNewCardName(e.target.value)}
           />
-          <button type="submit">Add Card</button>
+          <button type="submit">{translations[language].addCard}</button>
         </form>
 
-        {/* Archive Dropdown */}
+       
         <div className="archive-dropdown">
-          <label>Show: </label>
+          <label>{translations[language].switchArchive}</label>
           <select
             onChange={() => toggleArchiveFilter()}
             value={showArchived ? 'archived' : 'unarchived'}
           >
-            <option value="unarchived">Unarchived</option>
-            <option value="archived">Archived</option>
+            <option value="unarchived">{translations[language].unarchived}</option>
+            <option value="archived">{translations[language].archived}</option>
           </select>
         </div>
 
-        {/* Toggle View Mode Button */}
+        
         <button onClick={toggleViewMode} className="toggle-view-button">
-          {viewMode === 'list' ? 'Switch to Tiles' : 'Switch to List'}
+          {translations[language].switchViewMode}
         </button>
       </div>
 
-      {/* Render the shopping cards */}
       <div className={`shopping-cards-container ${viewMode}`}>
         {filteredShoppingCards.map((card) => (
           <ShoppingListCard
@@ -104,6 +130,11 @@ const App = () => {
           />
         ))}
       </div>
+
+    
+      <button onClick={toggleLanguage} className="toggle-language-button">
+        {translations[language].switchLanguage}
+      </button>
     </div>
   );
 };
