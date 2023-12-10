@@ -27,7 +27,7 @@
 }
 
 .list .shopping-card {
-  display: block; /* Ensure cards are displayed as blocks in list view */
+  display: block; 
 }
 
 .tiles .shopping-card {
@@ -62,7 +62,6 @@
   align-items: center;
 }
 
-/* Style for individual buttons */
 .action-buttons button,
 .archive-dropdown select,
 .toggle-view-button {
@@ -98,4 +97,13 @@
 
 .archive-dropdown label {
   margin-right: 5px;
+}
+.app.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.app.dark-mode {
+  background-color: #333;
+  color: #fff;
 }
